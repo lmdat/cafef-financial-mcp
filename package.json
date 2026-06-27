@@ -1,0 +1,46 @@
+{
+  "name": "@lmdat/cafef-financial-mcp",
+  "version": "1.0.0",
+  "author": "Lê Minh Đạt <sirminhdat@gmail.com>",
+  "description": "MCP server lấy dữ liệu báo cáo tài chính doanh nghiệp Việt Nam từ cafef.vn",
+  "type": "module",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "cafef-financial-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build:min",
+    "build:bundle": "npm run build && esbuild build/index.js --bundle --platform=node --format=esm --outfile=dist/index.js --external:@modelcontextprotocol/sdk --external:zod",
+    "build:min": "npm run build && esbuild build/index.js --bundle --platform=node --format=esm --outfile=dist/index.js --minify --external:@modelcontextprotocol/sdk --external:zod",
+    "build:obfuscate": "npm run build:min && javascript-obfuscator dist/index.js --output dist/index.js --compact true --string-array true --string-array-encoding base64 --rename-globals false --self-defending false"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "mcp",
+    "cafef financial",
+    "cafef bctc"
+  ],
+  "license": "MIT",  
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "esbuild": "^0.28.1",
+    "javascript-obfuscator": "^5.4.3",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
