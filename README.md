@@ -1,4 +1,4 @@
-# cafef-financial-mcp
+# @lmdat/cafef-financial-mcp
 
 Local MCP server (Node.js + TypeScript) lấy dữ liệu báo cáo tài chính doanh nghiệp Việt Nam
 (Bảng cân đối kế toán, Báo cáo kết quả kinh doanh, Báo cáo lưu chuyển tiền tệ) trực tiếp từ
